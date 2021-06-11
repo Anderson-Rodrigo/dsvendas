@@ -19,12 +19,6 @@ public class Seller {
 
 	public Seller(){}
 
-	public Seller (Long id, String name, List<Sale> sales) {
-		this.id = id;
-		this.name = name;
-		this.sales = sales;
-	}
-
 	public Long getId () {
 		return id;
 	}
@@ -41,7 +35,7 @@ public class Seller {
 		this.name = name;
 	}
 
-	public List<Sale> sales () {
+	public List<Sale> getSales () {
 		return sales;
 	}
 

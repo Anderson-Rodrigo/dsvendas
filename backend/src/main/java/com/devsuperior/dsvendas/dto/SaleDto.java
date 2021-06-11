@@ -1,36 +1,27 @@
-package com.devsuperior.dsvendas.entities;
+package com.devsuperior.dsvendas.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.devsuperior.dsvendas.entities.Sale;
 
-import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-@Table(name = "tb_sales")
-@Entity
-public class Sale {
+public class SaleDto implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer visited;
 	private Integer deals;
 	private Double amount;
 	private LocalDate date;
 
-	@ManyToOne
-	@JoinColumn(name = "seller_id")
-	private Seller seller;
+	private SellerDto sellerDto;
 
-	public Sale(){}
-
-	public Sale (Long id, Integer visited, Integer deals, Double amount, LocalDate date, Seller seller) {
-		this.id = id;
-		this.visited = visited;
-		this.deals = deals;
-		this.amount = amount;
-		this.date = date;
-		this.seller = seller;
+	public SaleDto(Sale entity){
+		id = entity.getId();
+		visited = entity.getVisited();
+		deals = entity.getDeals();
+		amount = entity.getAmount();
+		date = entity.getDate();
+		sellerDto = new SellerDto(entity.getSeller());
 	}
 
 	public Long getId () {
@@ -73,11 +64,11 @@ public class Sale {
 		this.date = date;
 	}
 
-	public Seller getSeller () {
-		return seller;
+	public SellerDto getSellerDto () {
+		return sellerDto;
 	}
 
-	public void setSeller (Seller seller) {
-		this.seller = seller;
+	public void setSellerDto (SellerDto sellerDto) {
+		this.sellerDto = sellerDto;
 	}
 }
