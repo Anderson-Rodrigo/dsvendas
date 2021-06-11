@@ -1,8 +1,5 @@
 package com.devsuperior.dsvendas.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
